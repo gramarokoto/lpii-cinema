@@ -1,0 +1,8 @@
+<template></template>
+<script>
+export default {
+  beforeCreate() {
+    this.$router.push({ name: 'home-page-page', params: { page: 1 } })
+  },
+}
+</script>
