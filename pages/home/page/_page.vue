@@ -7,7 +7,6 @@
       :currentPage="currentPageProps"
       :total="allRubriquesLength"
       :perPage="pageSize"
-      @change="handlePaginationChange($event)"
     />
   </section>
 </template>
@@ -41,12 +40,6 @@ export default {
   computed: {
     currentPageProps() {
       return this.currentPage
-    },
-  },
-  methods: {
-    async handlePaginationChange(page) {
-      this.currentPage = page
-      this.$router.push({ name: 'home-page-page', params: { page: page } })
     },
   },
 }
