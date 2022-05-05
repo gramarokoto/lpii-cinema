@@ -1,33 +1,36 @@
 <template>
-  <section class="section">
-    <div class="columns is-mobile">
-      <card title="Free" icon="github">
-        Open source on <a href="https://github.com/buefy/buefy"> GitHub </a>
-      </card>
-
-      <card title="Responsive" icon="cellphone-link">
-        <b class="has-text-grey"> Every </b> component is responsive
-      </card>
-
-      <card title="Modern" icon="alert-decagram">
-        Built with <a href="https://vuejs.org/"> Vue.js </a> and
-        <a href="http://bulma.io/"> Bulma </a>
-      </card>
-
-      <card title="Lightweight" icon="arrange-bring-to-front">
-        No other internal dependency
-      </card>
+  <section class="home">
+    <div v-if="rubriques">
+      {{ rubriques }}
     </div>
+    <pagination></pagination>
   </section>
 </template>
 
 <script>
-import Card from '~/components/Card'
-
 export default {
-  name: 'IndexPage',
-  components: {
-    Card,
+  async asyncData({ store, route }) {
+    const { state } = store
+    const allRubriques = state.home
+    const pageSize = 10
+    const totalPages = Math.ceil(allRubriques.length / pageSize)
+    const query = route.query
+    if ('page' in query) {
+      let currentPage = +query.page
+      if (currentPage < 1) {
+        currentPage = 1
+      } else if (currentPage > totalPages) {
+        const errorMessage = 'Page introuvable'
+        return { errorMessage }
+      }
+      const offset = (currentPage - 1) * pageSize
+      console.log(offset)
+      const rubriques = state.home.slice(offset, offset + pageSize)
+      return { rubriques }
+    } else {
+      const rubriques = state.home.slice(0, 10)
+      return { rubriques }
+    }
   },
 }
 </script>
