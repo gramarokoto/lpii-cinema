@@ -2,8 +2,8 @@
   <section>
     <hr />
     <b-pagination
-      :total="total"
       v-model="current"
+      :total="total"
       :range-before="rangeBefore"
       :range-after="rangeAfter"
       :order="order"
@@ -20,6 +20,7 @@
       :page-input="hasInput"
       :page-input-position="inputPosition"
       :debounce-page-input="inputDebounce"
+      @change="handlePaginationChange($event)"
     >
     </b-pagination>
   </section>
@@ -28,11 +29,22 @@
 <script>
 export default {
   name: 'Pagination',
+  props: {
+    currentPage: {
+      type: Number,
+      required: true,
+    },
+    total: {
+      type: Number,
+      required: true,
+    },
+    perPage: {
+      type: Number,
+      required: true,
+    },
+  },
   data() {
     return {
-      total: 200,
-      current: 1,
-      perPage: 15,
       rangeBefore: 3,
       rangeAfter: 3,
       order: '',
@@ -45,6 +57,21 @@ export default {
       inputPosition: '',
       inputDebounce: '',
     }
+  },
+  computed: {
+    current: {
+      get() {
+        return this.currentPage
+      },
+      set() {
+        return this.currentPage
+      },
+    },
+  },
+  methods: {
+    handlePaginationChange(page) {
+      this.$router.push({ name: 'home-page-page', params: { page: page } })
+    },
   },
 }
 </script>

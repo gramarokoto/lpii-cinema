@@ -35,7 +35,7 @@ export default {
   ],
 
   router: {
-    base: '/home',
+    // base: '/home',
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
