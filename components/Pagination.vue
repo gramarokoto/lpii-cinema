@@ -42,6 +42,10 @@ export default {
       type: Number,
       required: true,
     },
+    type: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
@@ -70,7 +74,10 @@ export default {
   },
   methods: {
     handlePaginationChange(page) {
-      this.$router.push({ path: 'home-page-page', params: { page: page } })
+      this.$router.push({
+        name: `${this.type}-page-page`,
+        params: { page: page },
+      })
     },
   },
 }
