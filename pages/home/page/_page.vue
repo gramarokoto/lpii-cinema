@@ -1,7 +1,20 @@
 <template>
   <section class="home">
-    <div v-if="rubriques">
-      {{ rubriques }}
+    <div v-if="rubriques" class="columns is-multiline">
+      <div
+        v-for="rubrique in rubriques"
+        :key="rubrique.id"
+        class="column is-one-fifth gap"
+      >
+        <div class="box">
+          {{ rubrique.fullname }}
+          <b-image
+            :src="`https://ba-api.lpnt.fr/images/personne/${rubrique.img}`"
+            :alt="rubrique.fullname"
+            @error="$event.target.src = require('~/assets/nuxt-logo.png')"
+          ></b-image>
+        </div>
+      </div>
     </div>
     <pagination
       :currentPage="currentPageProps"
@@ -30,6 +43,7 @@ export default {
       }
       const offset = (currentPage - 1) * pageSize
       const rubriques = state.home.slice(offset, offset + pageSize)
+
       return { rubriques, currentPage, pageSize, allRubriquesLength }
     } else {
       const rubriques = state.home.slice(0, 10)
