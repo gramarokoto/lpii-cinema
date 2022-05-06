@@ -46,7 +46,7 @@ export default {
         {
           title: 'Home',
           icon: 'home',
-          to: { name: 'index' },
+          to: { path: '/home/page/1' },
         },
       ],
     }
