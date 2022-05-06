@@ -13,6 +13,7 @@
       :currentPage="currentPageProps"
       :total="allRubriquesLength"
       :perPage="pageSize"
+      :type="type"
     />
   </section>
 </template>
@@ -33,6 +34,11 @@ export default {
       type: 'actors',
       route,
     })
+  },
+  data() {
+    return {
+      type: 'actors',
+    }
   },
 }
 </script>

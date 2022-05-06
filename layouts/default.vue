@@ -46,7 +46,12 @@ export default {
         {
           title: 'Home',
           icon: 'home',
-          to: { path: '/home/page/1' },
+          to: { path: '/' },
+        },
+        {
+          title: 'Actors',
+          icon: 'person',
+          to: { path: '/actors' },
         },
       ],
     }
