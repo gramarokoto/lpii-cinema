@@ -30,7 +30,7 @@ export default {
   },
   async asyncData({ store, route }) {
     return await store.getters['getRubriques']({
-      type: 'home',
+      type: 'actors',
       route,
     })
   },

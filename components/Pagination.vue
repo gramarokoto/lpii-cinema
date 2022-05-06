@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     handlePaginationChange(page) {
-      this.$router.push({ name: 'home-page-page', params: { page: page } })
+      this.$router.push({ path: 'home-page-page', params: { page: page } })
     },
   },
 }
