@@ -27,11 +27,15 @@ export default {
   computed: {
     getShorterProfession() {
       const professions = this.rubrique.profession
-      const arrayProfessions = professions.split(', ')
-      if (arrayProfessions.length > 1) {
-        return `${arrayProfessions[0]} et autres ...`
+      if (professions) {
+        const arrayProfessions = professions.split(', ')
+        if (arrayProfessions.length > 1) {
+          return `${arrayProfessions[0]} et autres ...`
+        } else {
+          return arrayProfessions[0]
+        }
       } else {
-        return arrayProfessions[0]
+        return 'Non renseigné'
       }
     },
   },
