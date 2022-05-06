@@ -8,11 +8,10 @@
       >
         <div class="box">
           {{ rubrique.fullname }}
-          <b-image
+          <app-image
             :src="`https://ba-api.lpnt.fr/images/personne/${rubrique.img}`"
-            :alt="rubrique.fullname"
-            @error="$event.target.src = require('~/assets/nuxt-logo.png')"
-          ></b-image>
+            :rubrique="rubrique"
+          />
         </div>
       </div>
     </div>
@@ -25,7 +24,15 @@
 </template>
 
 <script>
+import AppImage from '../../../components/AppImage.vue'
+
 export default {
+  components: { AppImage },
+  computed: {
+    currentPageProps() {
+      return this.currentPage
+    },
+  },
   async asyncData({ store, route }) {
     const { state } = store
     const allRubriques = state.home
@@ -43,18 +50,12 @@ export default {
       }
       const offset = (currentPage - 1) * pageSize
       const rubriques = state.home.slice(offset, offset + pageSize)
-
       return { rubriques, currentPage, pageSize, allRubriquesLength }
     } else {
       const rubriques = state.home.slice(0, 10)
       const currentPage = 1
       return { rubriques, currentPage, pageSize, allRubriquesLength }
     }
-  },
-  computed: {
-    currentPageProps() {
-      return this.currentPage
-    },
   },
 }
 </script>
