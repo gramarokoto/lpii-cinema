@@ -40,7 +40,6 @@ export default {
     getUserInitial() {
       const userName = this.rubrique.fullname
       const arrayNames = userName.split(' ')
-      console.log(arrayNames)
       if (arrayNames.length > 1) {
         return arrayNames[0][0] + arrayNames[1][0]
       } else {
@@ -51,7 +50,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .person-image {
   height: 200px;
 }
