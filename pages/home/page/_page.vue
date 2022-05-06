@@ -6,16 +6,10 @@
         :key="rubrique.id"
         class="column is-one-fifth gap"
       >
-        <div class="box">
-          {{ rubrique.fullname }}
-          <app-image
-            :src="`https://ba-api.lpnt.fr/images/personne/${rubrique.img}`"
-            :rubrique="rubrique"
-          />
-        </div>
+        <AppBoxRubrique :rubrique="rubrique" />
       </div>
     </div>
-    <pagination
+    <Pagination
       :currentPage="currentPageProps"
       :total="allRubriquesLength"
       :perPage="pageSize"
@@ -24,10 +18,11 @@
 </template>
 
 <script>
-import AppImage from '../../../components/AppImage.vue'
+import AppBoxRubrique from '../../../components/AppBoxRubrique.vue'
+import Pagination from '../../../components/Pagination.vue'
 
 export default {
-  components: { AppImage },
+  components: { AppBoxRubrique, Pagination },
   computed: {
     currentPageProps() {
       return this.currentPage
@@ -59,3 +54,10 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.box {
+  height: 350px;
+  overflow: hidden;
+}
+</style>
