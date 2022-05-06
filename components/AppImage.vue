@@ -51,15 +51,14 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/assets/style.scss';
 .person-image {
   height: 200px;
 }
 .person-no-image {
   height: 200px;
   aspect-ratio: 1 / 1;
-  background-color: #d5d6e9;
-  /* TODO : Change color with buefy theme color */
-  /* background-color: var(--primary); */
+  background-color: $primary-light;
   border-radius: 50%;
   display: flex;
   flex-direction: row;
