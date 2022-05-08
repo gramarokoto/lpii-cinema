@@ -4,7 +4,7 @@
       {{ errorMessage }}
     </div>
     <div>
-      <div class="box columns">
+      <div class="box columns mt-3">
         <div class="column is-one-fifth">
           <AppImage
             :src="`https://ba-api.lpnt.fr/images/personne/${person.content.photo}`"
@@ -23,6 +23,23 @@
             <a target="_blank" :href="person.content.url_dbpedia"
               >En savoir plus</a
             >
+          </div>
+        </div>
+      </div>
+      <div class="box mt-3">
+        <p class="is-size-2">Filmographie</p>
+        <div class="columns is-multiline">
+          <div
+            v-for="movie in movies"
+            :key="movie.imdb_id"
+            class="column is-one-fifth gap film"
+          >
+            <b-image
+              :src="`https://ba-api.lpnt.fr/images/film/${movie.content.pictures[0].content.name}`"
+            />
+            <p class="is-size-5 mt-4">
+              {{ movie.title }}
+            </p>
           </div>
         </div>
       </div>
@@ -48,5 +65,21 @@ export default {
     }
   },
   components: { AppImage },
+  computed: {
+    movies() {
+      return this.person.content.movies
+    },
+  },
 }
 </script>
+
+<style>
+.film {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+}
+</style>
