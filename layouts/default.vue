@@ -19,6 +19,9 @@
         <b-navbar-item tag="router-link" :to="{ path: '/directors' }">
           Directors
         </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/productors' }">
+          Productors
+        </b-navbar-item>
       </template>
       <template #end>
         <b-navbar-item tag="div">
