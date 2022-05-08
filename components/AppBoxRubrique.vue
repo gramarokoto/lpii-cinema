@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box app-rubrique" @click="handleClick">
     <AppImage
       :src="`https://ba-api.lpnt.fr/images/personne/${rubrique.img}`"
       :fullname="rubrique.fullname"
@@ -41,5 +41,16 @@ export default {
       }
     },
   },
+  methods: {
+    handleClick() {
+      this.$router.push({ name: 'person-id', params: { id: this.rubrique.id } })
+    },
+  },
 }
 </script>
+
+<style>
+.app-rubrique:hover {
+  cursor: pointer;
+}
+</style>
