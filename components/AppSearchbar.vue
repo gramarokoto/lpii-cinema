@@ -9,7 +9,13 @@
         placeholder="Chercher une personne"
         icon="magnify"
         clearable
-        @select="(option) => (selected = option)"
+        @select="
+          (option) => {
+            if (option && option.id) {
+              $router.push({ name: 'person-id', params: { id: option.id } })
+            }
+          }
+        "
       >
         <template #empty>No results found</template>
       </b-autocomplete>
