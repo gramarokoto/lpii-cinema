@@ -20,6 +20,11 @@
           Directors
         </b-navbar-item>
       </template>
+      <template #end>
+        <b-navbar-item tag="div">
+          <AppSearchbar />
+        </b-navbar-item>
+      </template>
     </b-navbar>
     <section class="main-content columns">
       <div class="container column is-10">
@@ -30,6 +35,7 @@
 </template>
 
 <script>
+import AppSearchbar from '../components/AppSearchbar.vue'
 export default {
   name: 'DefaultLayout',
   data() {
@@ -50,6 +56,7 @@ export default {
       ],
     }
   },
+  components: { AppSearchbar },
 }
 </script>
 
