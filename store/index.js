@@ -48,7 +48,7 @@ export const getters = {
     const { type, route } = options
     if (
       !type ||
-      !['home', 'actors', 'directors', 'producteurs'].includes(type)
+      !['home', 'actors', 'directors', 'productors'].includes(type)
     ) {
       return
     }
