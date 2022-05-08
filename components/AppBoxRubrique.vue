@@ -25,6 +25,7 @@ export default {
   },
   components: { AppImage },
   computed: {
+    // TODO : Check Marjane Satrapi case and Mark Millar
     getShorterProfession() {
       const professions = this.rubrique.profession
       if (professions) {
