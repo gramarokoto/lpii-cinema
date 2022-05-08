@@ -3,14 +3,14 @@
     <div class="person-image" v-if="!error">
       <b-image
         :src="src"
-        :alt="rubrique.fullname"
+        :alt="fullname"
         @error="
           ($event) => {
             $event.target.src = require('~/assets/nuxt-logo.png')
             error = true
           }
         "
-        rounded
+        v-bind="$attrs"
         ratio="1by1"
       ></b-image>
     </div>
@@ -27,8 +27,9 @@ export default {
     src: {
       type: String,
     },
-    rubrique: {
-      type: Object,
+    fullname: {
+      type: String,
+      required: true,
     },
   },
   data() {
@@ -38,7 +39,7 @@ export default {
   },
   computed: {
     getUserInitial() {
-      const userName = this.rubrique.fullname
+      const userName = this.fullname
       const arrayNames = userName.split(' ')
       if (arrayNames.length > 1) {
         return arrayNames[0][0] + arrayNames[1][0]
@@ -53,10 +54,11 @@ export default {
 <style lang="scss">
 @import '@/assets/style.scss';
 .person-image {
-  height: 200px;
+  max-height: 300px;
+  width: 200px;
 }
 .person-no-image {
-  height: 200px;
+  width: 200px;
   aspect-ratio: 1 / 1;
   background-color: $primary-light;
   border-radius: 50%;

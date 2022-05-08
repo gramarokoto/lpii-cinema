@@ -2,7 +2,8 @@
   <div class="box">
     <AppImage
       :src="`https://ba-api.lpnt.fr/images/personne/${rubrique.img}`"
-      :rubrique="rubrique"
+      :fullname="rubrique.fullname"
+      rounded
     />
     <p class="is-size-5 mt-2">
       {{ rubrique.fullname }}
